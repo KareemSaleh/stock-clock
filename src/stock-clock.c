@@ -3,6 +3,9 @@
 static Window *s_main_window;
 static TextLayer *s_time_layer;
 
+/**
+ * Updates the text layer with current time.
+ */
 static void update_time() {
   // Get a tm structure
   time_t temp = time(NULL);
@@ -17,10 +20,16 @@ static void update_time() {
   text_layer_set_text(s_time_layer, s_buffer);
 }
 
+/**
+ * Handles time "tick" events.
+ */
 static void tick_handler(struct tm *tick_time, TimeUnits units_changed) {
   update_time();
 }
 
+/**
+ * Loads the main window
+ */
 static void main_window_load(Window *window) {
   // Get information about the Window
   Layer *window_layer = window_get_root_layer(window);
@@ -41,11 +50,17 @@ static void main_window_load(Window *window) {
   layer_add_child(window_layer, text_layer_get_layer(s_time_layer));
 }
 
+/**
+ * Unloads the main window
+ */
 static void main_window_unload(Window *window) {
   // Destroy TextLayer
   text_layer_destroy(s_time_layer);
 }
 
+/**
+ * Initialize the watchface
+ */
 static void init() {
   // Create the Window
   s_main_window = window_create();
@@ -66,6 +81,9 @@ static void init() {
   update_time();
 }
 
+/**
+ * Deinitialize the watchface
+ */
 static void deinit() {
   // Destroy the TextLayer
   text_layer_destroy(s_time_layer);
@@ -73,6 +91,9 @@ static void deinit() {
   window_destroy(s_main_window);
 }
 
+/**
+ * Main event loop
+ */
 int main(void) {
   // Initialize the app
   init();
