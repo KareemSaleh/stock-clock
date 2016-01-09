@@ -4,3 +4,6 @@ build
 
 # Ignore waf lock file
 .lock-waf*
+
+# Fucking .DS_Store
+.DS_Store
