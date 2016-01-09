@@ -63,6 +63,9 @@ static void main_window_load(Window *window) {
 static void main_window_unload(Window *window) {
   // Destroy TextLayer
   text_layer_destroy(s_time_layer);
+
+  // Unload GFont
+  fonts_unload_custom_font(s_time_font);
 }
 
 /**
