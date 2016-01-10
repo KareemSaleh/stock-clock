@@ -16,6 +16,7 @@
         "type": "font",
         "name": "FONT_PERFECT_DOS_48",
         "file": "fonts/perfect-dos-vga.ttf",
+        "characterRegex": "[0-9:A-Za-z° ]",
         "compatibility":"2.7"
       }
     ]
