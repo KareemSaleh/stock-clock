@@ -14,9 +14,16 @@
     "media": [
       {
         "type": "font",
-        "name": "FONT_PERFECT_DOS_48",
-        "file": "fonts/perfect-dos-vga.ttf",
+        "name": "FONT_ALARM_CLOCK_48",
+        "file": "fonts/alarm-clock.ttf",
         "characterRegex": "[0-9:A-Za-z° ]",
+        "compatibility":"2.7"
+      },
+      {
+        "type": "font",
+        "name": "FONT_SUBWAY_TICKER_24",
+        "file": "fonts/subway-ticker.ttf",
+        "characterRegex": "[0-9+-.]",
         "compatibility":"2.7"
       }
     ]

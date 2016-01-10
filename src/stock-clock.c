@@ -1,8 +1,8 @@
 #include <pebble.h>
 
 static Window *s_main_window;
-static TextLayer *s_time_layer;
-static GFont s_time_font;
+static TextLayer *s_time_layer, *s_stock_layer;
+static GFont s_time_font, s_stock_font;
 
 /**
  * Updates the text layer with current time.
@@ -35,10 +35,14 @@ static void main_window_load(Window *window) {
   // Get information about the Window
   Layer *window_layer = window_get_root_layer(window);
   GRect bounds = layer_get_bounds(window_layer);
+  int stock_layer_w = bounds.size.w/2;
+  int stock_layer_x = bounds.size.w/4;
 
-  // Create the TextLayer with specific bounds
+  // Create the TextLayers with specific bounds
   s_time_layer = text_layer_create(
       GRect(0, PBL_IF_ROUND_ELSE(58, 52), bounds.size.w, 50));
+  s_stock_layer = text_layer_create(
+      GRect(stock_layer_x, PBL_IF_ROUND_ELSE(118, 112), stock_layer_w, 25));
 
   // Improve the layout to be more like a watchface
   text_layer_set_background_color(s_time_layer, GColorClear);
@@ -46,14 +50,23 @@ static void main_window_load(Window *window) {
   text_layer_set_text(s_time_layer, "00:00");
   text_layer_set_text_alignment(s_time_layer, GTextAlignmentCenter);
 
+  // Improve the layout to be more like a watchface
+  text_layer_set_background_color(s_stock_layer, GColorClear);
+  text_layer_set_text_color(s_stock_layer, GColorBlack);
+  text_layer_set_text(s_stock_layer, "+0.0");
+  text_layer_set_text_alignment(s_stock_layer, GTextAlignmentCenter);
+
   // Create GFont
-  s_time_font = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_PERFECT_DOS_48));
+  s_time_font = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_ALARM_CLOCK_48));
+  s_stock_font = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_SUBWAY_TICKER_24));
 
   // Apply to TextLayer
   text_layer_set_font(s_time_layer, s_time_font);
+  text_layer_set_font(s_stock_layer, s_stock_font);
 
   // Add it as a child layer to the Window's root layer
   layer_add_child(window_layer, text_layer_get_layer(s_time_layer));
+  layer_add_child(window_layer, text_layer_get_layer(s_stock_layer));
 }
 
 /**
@@ -62,9 +75,11 @@ static void main_window_load(Window *window) {
 static void main_window_unload(Window *window) {
   // Destroy TextLayer
   text_layer_destroy(s_time_layer);
+  text_layer_destroy(s_stock_layer);
 
   // Unload GFont
   fonts_unload_custom_font(s_time_font);
+  fonts_unload_custom_font(s_stock_font);
 }
 
 /**
