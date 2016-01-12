@@ -4,6 +4,15 @@ static Window *s_main_window;
 static TextLayer *s_time_layer, *s_stock_layer;
 static GFont s_time_font, s_stock_font;
 
+static Layer *s_path_layer;
+
+// GPath describes the shape
+static GPath *s_path;
+static GPathInfo PATH_INFO = {
+  .num_points = 5,
+  .points = (GPoint[]) { {30, 60}, {70, 30}, {110, 60}, {110, 120}, {30, 120} }
+};
+
 /**
  * Updates the text layer with current time.
  */
@@ -26,6 +35,19 @@ static void update_time() {
  */
 static void tick_handler(struct tm *tick_time, TimeUnits units_changed) {
   update_time();
+}
+
+/**
+ * @TODO clean up this function
+ * @param layer [description]
+ * @param ctx   [description]
+ */
+static void layer_update_proc(Layer *layer, GContext *ctx) {
+  // Set the color using RGB values
+  graphics_context_set_fill_color(ctx, GColorFromRGB(255, 0, 0));
+
+  // Draw the filled shape in above color
+  gpath_draw_filled(ctx, s_path);
 }
 
 /**
@@ -67,7 +89,17 @@ static void main_window_load(Window *window) {
   text_layer_set_font(s_time_layer, s_time_font);
   text_layer_set_font(s_stock_layer, s_stock_font);
 
+  // Setup stock direction layers
+  // Create GPath object
+  s_path = gpath_create(&PATH_INFO);
+
+  // Create Layer that the path will be drawn on
+  s_path_layer = layer_create(bounds);
+  layer_set_update_proc(s_path_layer, layer_update_proc);
+
+
   // Add it as a child layer to the Window's root layer
+  layer_add_child(window_layer, s_path_layer);
   layer_add_child(window_layer, text_layer_get_layer(s_time_layer));
   layer_add_child(window_layer, text_layer_get_layer(s_stock_layer));
 }
@@ -79,6 +111,10 @@ static void main_window_unload(Window *window) {
   // Destroy TextLayer
   text_layer_destroy(s_time_layer);
   text_layer_destroy(s_stock_layer);
+
+  // Destroy ticker graphic layer and path
+  layer_destroy(s_path_layer);
+  gpath_destroy(s_path);
 
   // Unload GFont
   fonts_unload_custom_font(s_time_font);
