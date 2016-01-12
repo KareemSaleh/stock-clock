@@ -36,7 +36,7 @@ static void main_window_load(Window *window) {
   Layer *window_layer = window_get_root_layer(window);
   GRect bounds = layer_get_bounds(window_layer);
   int stock_layer_w = bounds.size.w/2;
-  int stock_layer_x = bounds.size.w/4;
+  int stock_layer_x = stock_layer_w/2;
 
   // Create the TextLayers with specific bounds
   s_time_layer = text_layer_create(
@@ -44,23 +44,26 @@ static void main_window_load(Window *window) {
   s_stock_layer = text_layer_create(
       GRect(stock_layer_x, PBL_IF_ROUND_ELSE(118, 112), stock_layer_w, 25));
 
-  // Improve the layout to be more like a watchface
+  // Set main window colour
+  window_set_background_color(s_main_window, GColorOrange);
+
+  // time layer
   text_layer_set_background_color(s_time_layer, GColorClear);
   text_layer_set_text_color(s_time_layer, GColorBlack);
   text_layer_set_text(s_time_layer, "00:00");
   text_layer_set_text_alignment(s_time_layer, GTextAlignmentCenter);
 
-  // Improve the layout to be more like a watchface
+  // stock layer
   text_layer_set_background_color(s_stock_layer, GColorClear);
   text_layer_set_text_color(s_stock_layer, GColorBlack);
   text_layer_set_text(s_stock_layer, "+0.0");
   text_layer_set_text_alignment(s_stock_layer, GTextAlignmentCenter);
 
-  // Create GFont
+  // Create fonts for above layers
   s_time_font = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_ALARM_CLOCK_48));
   s_stock_font = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_SUBWAY_TICKER_24));
 
-  // Apply to TextLayer
+  // Apply to TextLayers
   text_layer_set_font(s_time_layer, s_time_font);
   text_layer_set_font(s_stock_layer, s_stock_font);
 
