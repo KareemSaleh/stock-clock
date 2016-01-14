@@ -10,7 +10,7 @@ static Layer *s_path_layer;
 static GPath *s_path;
 static GPathInfo PATH_INFO = {
   .num_points = 5,
-  .points = (GPoint[]) { {30, 60}, {70, 30}, {110, 60}, {110, 120}, {30, 120} }
+  .points = (GPoint[]) { {10, 60}, {70, 20}, {130, 60}, {130, 140}, {10, 140} }
 };
 
 /**
@@ -44,7 +44,7 @@ static void tick_handler(struct tm *tick_time, TimeUnits units_changed) {
  */
 static void layer_update_proc(Layer *layer, GContext *ctx) {
   // Set the color using RGB values
-  graphics_context_set_fill_color(ctx, GColorFromRGB(255, 0, 0));
+  graphics_context_set_fill_color(ctx, GColorFromRGB(0, 255, 0));
 
   // Draw the filled shape in above color
   gpath_draw_filled(ctx, s_path);
