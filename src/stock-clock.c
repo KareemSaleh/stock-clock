@@ -44,7 +44,7 @@ static void tick_handler(struct tm *tick_time, TimeUnits units_changed) {
  */
 static void layer_update_proc(Layer *layer, GContext *ctx) {
   // Set the color using RGB values
-  graphics_context_set_fill_color(ctx, GColorFromRGB(0, 255, 0));
+  graphics_context_set_fill_color(ctx, GColorMalachite);
 
   // Draw the filled shape in above color
   gpath_draw_filled(ctx, s_path);
@@ -67,7 +67,7 @@ static void main_window_load(Window *window) {
       GRect(stock_layer_x, PBL_IF_ROUND_ELSE(118, 112), stock_layer_w, 25));
 
   // Set main window colour
-  window_set_background_color(s_main_window, GColorOrange);
+  window_set_background_color(s_main_window, GColorBlack);
 
   // time layer
   text_layer_set_background_color(s_time_layer, GColorClear);
@@ -82,7 +82,7 @@ static void main_window_load(Window *window) {
   text_layer_set_text_alignment(s_stock_layer, GTextAlignmentCenter);
 
   // Create fonts for above layers
-  s_time_font = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_ALARM_CLOCK_48));
+  s_time_font = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_ALARM_CLOCK_30));
   s_stock_font = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_SUBWAY_TICKER_24));
 
   // Apply to TextLayers
