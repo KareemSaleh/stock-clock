@@ -1,4 +1,5 @@
 #include <pebble.h>
+#include <arrow.h>
 
 static Window *s_main_window;
 static TextLayer *s_time_layer, *s_stock_layer;
@@ -8,14 +9,6 @@ static Layer *s_up_arrow_layer, *s_down_arrow_layer;
 
 // GPath describes the shape
 static GPath *s_path;
-static GPathInfo UP_PATH_INFO = {
-  .num_points = 5,
-  .points = (GPoint[]) { {10, 60}, {70, 20}, {130, 60}, {130, 140}, {10, 140} }
-};
-static GPathInfo DOWN_PATH_INFO = {
-  .num_points = 5,
-  .points = (GPoint[]) { {10, 20}, {130, 20}, {130, 100}, {70, 140}, {10, 100} }
-};
 
 /**
  * Updates the text layer with current time.
