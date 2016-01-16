@@ -4,13 +4,17 @@ static Window *s_main_window;
 static TextLayer *s_time_layer, *s_stock_layer;
 static GFont s_time_font, s_stock_font;
 
-static Layer *s_path_layer;
+static Layer *s_up_arrow_layer, *s_down_arrow_layer;
 
 // GPath describes the shape
 static GPath *s_path;
-static GPathInfo PATH_INFO = {
+static GPathInfo UP_PATH_INFO = {
   .num_points = 5,
   .points = (GPoint[]) { {10, 60}, {70, 20}, {130, 60}, {130, 140}, {10, 140} }
+};
+static GPathInfo DOWN_PATH_INFO = {
+  .num_points = 5,
+  .points = (GPoint[]) { {10, 20}, {130, 20}, {130, 100}, {70, 140}, {10, 100} }
 };
 
 /**
@@ -91,15 +95,14 @@ static void main_window_load(Window *window) {
 
   // Setup stock direction layers
   // Create GPath object
-  s_path = gpath_create(&PATH_INFO);
+  s_path = gpath_create(&UP_PATH_INFO);
 
   // Create Layer that the path will be drawn on
-  s_path_layer = layer_create(bounds);
-  layer_set_update_proc(s_path_layer, layer_update_proc);
-
+  s_up_arrow_layer = layer_create(bounds);
+  layer_set_update_proc(s_up_arrow_layer, layer_update_proc);
 
   // Add it as a child layer to the Window's root layer
-  layer_add_child(window_layer, s_path_layer);
+  layer_add_child(window_layer, s_up_arrow_layer);
   layer_add_child(window_layer, text_layer_get_layer(s_time_layer));
   layer_add_child(window_layer, text_layer_get_layer(s_stock_layer));
 }
@@ -113,7 +116,7 @@ static void main_window_unload(Window *window) {
   text_layer_destroy(s_stock_layer);
 
   // Destroy ticker graphic layer and path
-  layer_destroy(s_path_layer);
+  layer_destroy(s_up_arrow_layer);
   gpath_destroy(s_path);
 
   // Unload GFont
