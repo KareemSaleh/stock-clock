@@ -1,14 +1,9 @@
-#include <pebble.h>
-#include <arrow.h>
+#include "arrow.h"
 
 static Window *s_main_window;
 static TextLayer *s_time_layer, *s_stock_layer;
 static GFont s_time_font, s_stock_font;
-
 static Layer *s_up_arrow_layer, *s_down_arrow_layer;
-
-// GPath describes the shape
-static GPath *s_path;
 
 /**
  * Updates the text layer with current time.
@@ -32,19 +27,6 @@ static void update_time() {
  */
 static void tick_handler(struct tm *tick_time, TimeUnits units_changed) {
   update_time();
-}
-
-/**
- * @TODO clean up this function
- * @param layer [description]
- * @param ctx   [description]
- */
-static void layer_update_proc(Layer *layer, GContext *ctx) {
-  // Set the color using RGB values
-  graphics_context_set_fill_color(ctx, GColorMalachite);
-
-  // Draw the filled shape in above color
-  gpath_draw_filled(ctx, s_path);
 }
 
 /**
@@ -87,12 +69,8 @@ static void main_window_load(Window *window) {
   text_layer_set_font(s_stock_layer, s_stock_font);
 
   // Setup stock direction layers
-  // Create GPath object
-  s_path = gpath_create(&UP_PATH_INFO);
-
-  // Create Layer that the path will be drawn on
-  s_up_arrow_layer = layer_create(bounds);
-  layer_set_update_proc(s_up_arrow_layer, layer_update_proc);
+  s_up_arrow_layer = getArrowLayer(bounds, UP_PATH_INFO);
+  s_down_arrow_layer = getArrowLayer(bounds, DOWN_PATH_INFO);
 
   // Add it as a child layer to the Window's root layer
   layer_add_child(window_layer, s_up_arrow_layer);
