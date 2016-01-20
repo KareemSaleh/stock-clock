@@ -43,7 +43,7 @@ static void main_window_load(Window *window) {
   s_time_layer = text_layer_create(
       GRect(0, PBL_IF_ROUND_ELSE(58, 52), bounds.size.w, 50));
   s_stock_layer = text_layer_create(
-      GRect(stock_layer_x, PBL_IF_ROUND_ELSE(118, 112), stock_layer_w, 25));
+      GRect(stock_layer_x, PBL_IF_ROUND_ELSE(98, 92), stock_layer_w, 25));
 
   // Set main window colour
   window_set_background_color(s_main_window, GColorBlack);
@@ -61,7 +61,7 @@ static void main_window_load(Window *window) {
   text_layer_set_text_alignment(s_stock_layer, GTextAlignmentCenter);
 
   // Create fonts for above layers
-  s_time_font = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_ALARM_CLOCK_30));
+  s_time_font = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_ALARM_CLOCK_36));
   s_stock_font = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_SUBWAY_TICKER_24));
 
   // Apply to TextLayers

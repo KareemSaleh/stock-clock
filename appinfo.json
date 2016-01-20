@@ -14,7 +14,7 @@
     "media": [
       {
         "type": "font",
-        "name": "FONT_ALARM_CLOCK_30",
+        "name": "FONT_ALARM_CLOCK_36",
         "file": "fonts/alarm-clock.ttf",
         "characterRegex": "[0-9:A-Za-z° ]",
         "compatibility":"2.7"
