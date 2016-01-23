@@ -54,13 +54,13 @@ static void main_window_load(Window *window) {
 
   // time layer
   text_layer_set_background_color(s_time_layer, GColorClear);
-  text_layer_set_text_color(s_time_layer, GColorBlack);
+  text_layer_set_text_color(s_time_layer, GColorWhite);
   text_layer_set_text(s_time_layer, "00:00");
   text_layer_set_text_alignment(s_time_layer, GTextAlignmentCenter);
 
   // stock layer
   text_layer_set_background_color(s_stock_layer, GColorClear);
-  text_layer_set_text_color(s_stock_layer, GColorBlack);
+  text_layer_set_text_color(s_stock_layer, GColorWhite);
   text_layer_set_text(s_stock_layer, "+0.0");
   text_layer_set_text_alignment(s_stock_layer, GTextAlignmentCenter);
 
@@ -73,11 +73,12 @@ static void main_window_load(Window *window) {
   text_layer_set_font(s_stock_layer, s_stock_font);
 
   // Setup stock direction layers
-  s_up_arrow_layer = getArrowLayer(bounds, UP_PATH_INFO);
-  s_down_arrow_layer = getArrowLayer(bounds, DOWN_PATH_INFO);
+  s_up_arrow_layer = getArrowLayer(bounds, PATH_INFO_UP, GColorMayGreen);
+  s_down_arrow_layer = getArrowLayer(bounds, PATH_INFO_DOWN, GColorJazzberryJam);
 
   // Add it as a child layer to the Window's root layer
   layer_add_child(window_layer, s_up_arrow_layer);
+  layer_add_child(window_layer, s_down_arrow_layer);
   layer_add_child(window_layer, text_layer_get_layer(s_time_layer));
   layer_add_child(window_layer, text_layer_get_layer(s_stock_layer));
 }
