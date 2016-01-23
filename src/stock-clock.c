@@ -39,6 +39,10 @@ static void main_window_load(Window *window) {
   int stock_layer_w = bounds.size.w/2;
   int stock_layer_x = stock_layer_w/2;
 
+  // Log our bounds For now
+  APP_LOG(APP_LOG_LEVEL_DEBUG, "[DEBUG] Bounds: x:%d y:%d w:%d h:%d",
+    bounds.origin.x, bounds.origin.y, bounds.size.w, bounds.size.h);
+
   // Create the TextLayers with specific bounds
   s_time_layer = text_layer_create(
       GRect(0, PBL_IF_ROUND_ELSE(58, 52), bounds.size.w, 50));
