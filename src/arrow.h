@@ -32,9 +32,6 @@ typedef struct {
   GPathInfo path_info;
 } ArrowLayerData;
 
-// GPath describes the arrow shape
-static GPath *s_path;
-
 static void layer_update_proc(Layer *layer, GContext *ctx);
 Layer* getArrowLayer(GRect bounds, GPathInfo path_info, GColor color);
 
