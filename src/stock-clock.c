@@ -76,6 +76,10 @@ static void main_window_load(Window *window) {
   s_up_arrow_layer = getArrowLayer(bounds, PATH_INFO_UP, GColorMayGreen);
   s_down_arrow_layer = getArrowLayer(bounds, PATH_INFO_DOWN, GColorJazzberryJam);
 
+  // Initially hide the arrow layers
+  layer_set_hidden(s_up_arrow_layer, true);
+  layer_set_hidden(s_down_arrow_layer, true);
+
   // Add it as a child layer to the Window's root layer
   layer_add_child(window_layer, s_up_arrow_layer);
   layer_add_child(window_layer, s_down_arrow_layer);
