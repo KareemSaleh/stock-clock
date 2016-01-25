@@ -25,6 +25,13 @@
         "file": "fonts/subway-ticker.ttf",
         "characterRegex": "[0-9+-.]",
         "compatibility":"2.7"
+      },
+      {
+        "type":"font",
+        "name":"FONT_FORECAST_20",
+        "file":"fonts/forecast.ttf",
+        "characterRegex": "[0-9:A-Za-z ]",
+        "compatibility": "2.7"
       }
     ]
   }

@@ -1,8 +1,8 @@
 #include "arrow.h"
 
 static Window *s_main_window;
-static TextLayer *s_time_layer, *s_stock_layer;
-static GFont s_time_font, s_stock_font;
+static TextLayer *s_time_layer, *s_stock_layer, *s_weather_layer;
+static GFont s_time_font, s_stock_font, s_weather_font;
 static Layer *s_up_arrow_layer, *s_down_arrow_layer;
 
 /**
@@ -48,29 +48,39 @@ static void main_window_load(Window *window) {
       GRect(0, PBL_IF_ROUND_ELSE(58, 52), bounds.size.w, 50));
   s_stock_layer = text_layer_create(
       GRect(stock_layer_x, PBL_IF_ROUND_ELSE(98, 92), stock_layer_w, 25));
+  s_weather_layer = text_layer_create(
+      GRect(0, PBL_IF_ROUND_ELSE(125, 120), bounds.size.w, 25));
 
   // Set main window colour
   window_set_background_color(s_main_window, GColorBlack);
 
-  // time layer
+  // Time layer
   text_layer_set_background_color(s_time_layer, GColorClear);
   text_layer_set_text_color(s_time_layer, GColorWhite);
   text_layer_set_text(s_time_layer, "00:00");
   text_layer_set_text_alignment(s_time_layer, GTextAlignmentCenter);
 
-  // stock layer
+  // Stock layer
   text_layer_set_background_color(s_stock_layer, GColorClear);
   text_layer_set_text_color(s_stock_layer, GColorWhite);
   text_layer_set_text(s_stock_layer, "+0.0");
   text_layer_set_text_alignment(s_stock_layer, GTextAlignmentCenter);
 
+  // Weather layer
+  text_layer_set_background_color(s_weather_layer, GColorClear);
+  text_layer_set_text_color(s_weather_layer, GColorWhite);
+  text_layer_set_text_alignment(s_weather_layer, GTextAlignmentCenter);
+  text_layer_set_text(s_weather_layer, "A");
+
   // Create fonts for above layers
   s_time_font = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_ALARM_CLOCK_36));
   s_stock_font = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_SUBWAY_TICKER_24));
+  s_weather_font = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_FORECAST_20));
 
   // Apply to TextLayers
   text_layer_set_font(s_time_layer, s_time_font);
   text_layer_set_font(s_stock_layer, s_stock_font);
+  text_layer_set_font(s_weather_layer, s_weather_font);
 
   // Setup stock direction layers
   s_up_arrow_layer = getArrowLayer(bounds, PATH_INFO_UP, GColorMayGreen);
@@ -85,6 +95,7 @@ static void main_window_load(Window *window) {
   layer_add_child(window_layer, s_down_arrow_layer);
   layer_add_child(window_layer, text_layer_get_layer(s_time_layer));
   layer_add_child(window_layer, text_layer_get_layer(s_stock_layer));
+  layer_add_child(window_layer, text_layer_get_layer(s_weather_layer));
 }
 
 /**
