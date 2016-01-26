@@ -70,12 +70,12 @@ static void main_window_load(Window *window) {
   text_layer_set_background_color(s_weather_layer, GColorClear);
   text_layer_set_text_color(s_weather_layer, GColorWhite);
   text_layer_set_text_alignment(s_weather_layer, GTextAlignmentCenter);
-  text_layer_set_text(s_weather_layer, "A");
+  text_layer_set_text(s_weather_layer, "0°C");
 
   // Create fonts for above layers
   s_time_font = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_ALARM_CLOCK_36));
   s_stock_font = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_SUBWAY_TICKER_24));
-  s_weather_font = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_FORECAST_20));
+  s_weather_font = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_ROBOTO_BOLD_20));
 
   // Apply to TextLayers
   text_layer_set_font(s_time_layer, s_time_font);

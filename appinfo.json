@@ -16,7 +16,7 @@
         "type": "font",
         "name": "FONT_ALARM_CLOCK_36",
         "file": "fonts/alarm-clock.ttf",
-        "characterRegex": "[0-9:A-Za-z° ]",
+        "characterRegex": "[0-9:A-Za-z ]",
         "compatibility":"2.7"
       },
       {
@@ -28,9 +28,9 @@
       },
       {
         "type":"font",
-        "name":"FONT_FORECAST_20",
-        "file":"fonts/forecast.ttf",
-        "characterRegex": "[0-9:A-Za-z ]",
+        "name":"FONT_ROBOTO_BOLD_20",
+        "file":"fonts/roboto-bold.ttf",
+        "characterRegex": "[0-9FC° ]",
         "compatibility": "2.7"
       }
     ]
