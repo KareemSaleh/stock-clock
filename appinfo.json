@@ -30,7 +30,7 @@
         "type":"font",
         "name":"FONT_ROBOTO_BOLD_20",
         "file":"fonts/roboto-bold.ttf",
-        "characterRegex": "[0-9FC° ]",
+        "characterRegex": "[0-9+-FC° ]",
         "compatibility": "2.7"
       }
     ]

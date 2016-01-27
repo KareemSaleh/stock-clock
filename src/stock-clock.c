@@ -70,7 +70,7 @@ static void main_window_load(Window *window) {
   text_layer_set_background_color(s_weather_layer, GColorClear);
   text_layer_set_text_color(s_weather_layer, GColorWhite);
   text_layer_set_text_alignment(s_weather_layer, GTextAlignmentCenter);
-  text_layer_set_text(s_weather_layer, "0°C");
+  text_layer_set_text(s_weather_layer, "--°C");
 
   // Create fonts for above layers
   s_time_font = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_ALARM_CLOCK_36));
