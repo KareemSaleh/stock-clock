@@ -105,13 +105,16 @@ static void main_window_unload(Window *window) {
   // Destroy TextLayer
   text_layer_destroy(s_time_layer);
   text_layer_destroy(s_stock_layer);
+  text_layer_destroy(s_weather_layer);
 
   // Destroy ticker graphic layer and path
   layer_destroy(s_up_arrow_layer);
+  // Destroy weather elements
 
   // Unload GFont
   fonts_unload_custom_font(s_time_font);
   fonts_unload_custom_font(s_stock_font);
+  fonts_unload_custom_font(s_weather_font);
 }
 
 /**
