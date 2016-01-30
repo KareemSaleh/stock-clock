@@ -110,7 +110,7 @@ static void main_window_unload(Window *window) {
 
   // Destroy ticker graphic layer and path
   layer_destroy(s_up_arrow_layer);
-  // Destroy weather elements
+  layer_destroy(s_down_arrow_layer);
 
   // Unload GFont
   fonts_unload_custom_font(s_time_font);
