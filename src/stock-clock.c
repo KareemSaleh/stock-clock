@@ -1,3 +1,5 @@
+#include <pebble.h>
+#include "stock-clock.h"
 #include "arrow.h"
 
 static Window *s_main_window;
