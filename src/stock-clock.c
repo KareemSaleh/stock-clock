@@ -1,6 +1,5 @@
 #include <pebble.h>
 #include "stock-clock.h"
-#include "arrow.h"
 
 static Window *s_main_window;
 static TextLayer *s_time_layer, *s_stock_layer, *s_weather_layer;
@@ -138,6 +137,9 @@ static void init() {
 
   // Push to the stack, animated
   window_stack_push(s_main_window, true);
+
+  // Register callbacks for communicating with phone
+  registerMessage();
 
   // Make sure the time is displayed from the start
   update_time();

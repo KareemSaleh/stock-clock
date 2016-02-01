@@ -1,6 +1,10 @@
 #ifndef STOCK_CLOCK_H
 #define STOCK_CLOCK_H
 
+#include "arrow.h"
+#include "message.h"
+#include "weather.h"
+
 #if defined(PBL_RECT)
 // 144 x 168
 static GPathInfo PATH_INFO_UP = {
