@@ -1,3 +1,4 @@
+var myAPIKey = '1f14864b11d1bca93ee5f425431b031c';
 var xhrRequest = function (url, type, callback) {
   var xhr = new XMLHttpRequest();
   xhr.onload = function () {
@@ -6,6 +7,23 @@ var xhrRequest = function (url, type, callback) {
   xhr.open(type, url);
   xhr.send();
 };
+
+// Assemble dictionary using our keys
+var dictionary = {
+  'KEY_TEMPERATURE': temperature,
+  'KEY_CONDITIONS': conditions
+};
+
+// Send to Pebble
+Pebble.sendAppMessage(dictionary,
+  function(e) {
+    console.log('Weather info sent to Pebble successfully!');
+  },
+  function(e) {
+    console.log('Error sending weather info to Pebble!');
+  }
+);
+
 
 function locationSuccess(pos) {
   // Construct URL
@@ -47,6 +65,14 @@ Pebble.addEventListener('ready',
     console.log('PebbleKit JS ready!');
 
     // Get the initial weather
+    getWeather();
+  }
+);
+
+// Listen for when an AppMessage is received
+Pebble.addEventListener('appmessage',
+  function(e) {
+    console.log('AppMessage received!');
     getWeather();
   }
 );
