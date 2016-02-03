@@ -8,23 +8,6 @@ var xhrRequest = function (url, type, callback) {
   xhr.send();
 };
 
-// Assemble dictionary using our keys
-var dictionary = {
-  'KEY_TEMPERATURE': temperature,
-  'KEY_CONDITIONS': conditions
-};
-
-// Send to Pebble
-Pebble.sendAppMessage(dictionary,
-  function(e) {
-    console.log('Weather info sent to Pebble successfully!');
-  },
-  function(e) {
-    console.log('Error sending weather info to Pebble!');
-  }
-);
-
-
 function locationSuccess(pos) {
   // Construct URL
   var url = 'http://api.openweathermap.org/data/2.5/weather?lat=' +
@@ -43,6 +26,22 @@ function locationSuccess(pos) {
       // Conditions
       var conditions = json.weather[0].main;
       console.log('Conditions are ' + conditions);
+
+      // Assemble dictionary using our keys
+      var dictionary = {
+        'KEY_TEMPERATURE': temperature,
+        'KEY_CONDITIONS': conditions
+      };
+
+      // Send to Pebble
+      Pebble.sendAppMessage(dictionary,
+        function(e) {
+          console.log('Weather info sent to Pebble successfully!');
+        },
+        function(e) {
+          console.log('Error sending weather info to Pebble!');
+        }
+      );
     }
   );
 }
