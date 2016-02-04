@@ -6,6 +6,7 @@ static TextLayer *s_time_layer, *s_stock_layer, *s_weather_layer;
 static GFont s_time_font, s_stock_font, s_weather_font;
 static Layer *s_up_arrow_layer, *s_down_arrow_layer;
 //@todo Date layer and bitmap layer for date style.
+//@todo create pointer to be sent as context to all message events?
 
 /**
  * Updates the text layer with current time.
