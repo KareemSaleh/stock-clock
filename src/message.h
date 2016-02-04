@@ -3,6 +3,6 @@
 
 #include <pebble.h>
 
-void registerMessage();
+void registerMessage(Window *context);
 
 #endif

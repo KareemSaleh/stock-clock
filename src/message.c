@@ -1,7 +1,7 @@
 #include "message.h"
 
 static void inbox_received_callback(DictionaryIterator *iterator, void *context) {
-
+  APP_LOG(APP_LOG_LEVEL_DEBUG, "[DEBUG] CONTEXT: %p", context);
 }
 
 static void inbox_dropped_callback(AppMessageResult reason, void *context) {
@@ -19,10 +19,16 @@ static void outbox_sent_callback(DictionaryIterator *iterator, void *context) {
 /**
  * Called when registering all the App Message callbacks
  */
-void registerMessage() {
+void registerMessage(Window *context) {
 
   app_message_register_inbox_received(inbox_received_callback);
   app_message_register_inbox_dropped(inbox_dropped_callback);
   app_message_register_outbox_failed(outbox_failed_callback);
   app_message_register_outbox_sent(outbox_sent_callback);
+
+  // Set the context that will be sent to all callbacks!
+  app_message_set_context(context);
+
+  // Open AppMessage
+  app_message_open(app_message_inbox_size_maximum(), app_message_outbox_size_maximum());
 }

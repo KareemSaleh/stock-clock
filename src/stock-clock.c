@@ -139,7 +139,7 @@ static void init() {
   window_stack_push(s_main_window, true);
 
   // Register callbacks for communicating with phone
-  registerMessage();
+  registerMessage(s_main_window);
 
   // Make sure the time is displayed from the start
   update_time();

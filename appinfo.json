@@ -10,8 +10,9 @@
     "watchface": true
   },
   "appKeys": {
-    "KEY_TEMPERATURE": 0,
-    "KEY_CONDITIONS": 1
+    "KEY_TYPE": 0,
+    "KEY_TEMPERATURE": 1,
+    "KEY_CONDITIONS": 2
   },
   "capabilities": [ "location" ],
   "resources": {
