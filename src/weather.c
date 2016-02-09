@@ -17,6 +17,5 @@ static void translateWeatherResponse(DictionaryIterator *iterator, void *window)
 
     // Assemble full string and display
     snprintf(weather_layer_buffer, sizeof(weather_layer_buffer), "%s, %s", temperature_buffer, conditions_buffer);
-    //text_layer_set_text(s_weather_layer, weather_layer_buffer);
   }
 }
