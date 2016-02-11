@@ -1,6 +1,6 @@
 #include "weather.h"
 
-static void translateWeatherResponse(DictionaryIterator *iterator, void *window) {
+void translate_weather_response(DictionaryIterator *iterator, void *layer) {
   // Store incoming information
   static char temperature_buffer[8];
   static char conditions_buffer[32];

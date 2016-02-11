@@ -3,6 +3,13 @@
 
 #include <pebble.h>
 
+#define KEY_TYPE 0
+
+typedef enum {
+  WEATHER,
+  STOCK
+} MessageType;
+
 void registerMessage(Window *context);
 
 #endif

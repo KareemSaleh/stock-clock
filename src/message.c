@@ -1,7 +1,20 @@
 #include "message.h"
+#include "weather.h"
 
 static void inbox_received_callback(DictionaryIterator *iterator, void *context) {
-  APP_LOG(APP_LOG_LEVEL_DEBUG, "[DEBUG] CONTEXT: %p", context);
+  Tuple *message_type_tuple = dict_find(iterator, KEY_TYPE);
+  MessageType message_type = message_type_tuple->value->int32;
+
+  // Find out what type of message we recieved
+  APP_LOG(APP_LOG_LEVEL_DEBUG, "[DEBUG] message_type: %i", message_type);
+  switch(message_type) {
+    case WEATHER :
+      translate_weather_response(iterator, context);
+      break;
+    case STOCK :
+    default :
+      APP_LOG(APP_LOG_LEVEL_WARNING, "[WARNING] Missing message type.");
+  }
 }
 
 static void inbox_dropped_callback(AppMessageResult reason, void *context) {

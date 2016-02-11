@@ -29,4 +29,12 @@ static GPathInfo PATH_INFO_DOWN = {
 
 #endif
 
+typedef enum {
+  TIME_LAYER,
+  STOCK_LAYER,
+  WEATHER_LAYER,
+  UP_LAYER,
+  DOWN_LAYER,
+} LayerType;
+
 #endif

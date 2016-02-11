@@ -140,6 +140,7 @@ static void init() {
   window_stack_push(s_main_window, true);
 
   // Register callbacks for communicating with phone
+  // TODO: We need a giant list of all layers passed here. Can't get children AFAIK.
   registerMessage(s_main_window);
 
   // Make sure the time is displayed from the start
