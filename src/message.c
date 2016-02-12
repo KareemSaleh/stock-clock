@@ -32,7 +32,7 @@ static void outbox_sent_callback(DictionaryIterator *iterator, void *context) {
 /**
  * Called when registering all the App Message callbacks
  */
-void registerMessage(Window *context) {
+void register_message_handlers(Window *context) {
 
   app_message_register_inbox_received(inbox_received_callback);
   app_message_register_inbox_dropped(inbox_dropped_callback);

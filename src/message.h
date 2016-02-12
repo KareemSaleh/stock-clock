@@ -10,6 +10,6 @@ typedef enum {
   STOCK
 } MessageType;
 
-void registerMessage(Window *context);
+void register_message_handlers(Window *context);
 
 #endif
