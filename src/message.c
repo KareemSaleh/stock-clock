@@ -9,7 +9,7 @@ static void inbox_received_callback(DictionaryIterator *iterator, void *context)
   APP_LOG(APP_LOG_LEVEL_DEBUG, "[DEBUG] message_type: %i", message_type);
   switch(message_type) {
     case WEATHER :
-      translate_weather_response(iterator, context);
+      translate_weather_response(iterator, s_weather_layer);
       break;
     case STOCK :
     default :

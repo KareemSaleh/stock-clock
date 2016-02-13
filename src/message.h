@@ -2,6 +2,7 @@
 #define MESSAGE_H
 
 #include <pebble.h>
+#include "stock-clock.h"
 
 #define KEY_TYPE 0
 
