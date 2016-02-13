@@ -1,5 +1,6 @@
 #include "message.h"
 #include "weather.h"
+#include "layers.h"
 
 static void inbox_received_callback(DictionaryIterator *iterator, void *context) {
   Tuple *message_type_tuple = dict_find(iterator, KEY_TYPE);

@@ -2,7 +2,6 @@
 #define MESSAGE_H
 
 #include <pebble.h>
-#include "layers.h"
 
 #define KEY_TYPE 0
 

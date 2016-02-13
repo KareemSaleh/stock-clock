@@ -3,6 +3,8 @@
 
 static Window *s_main_window;
 static GFont s_time_font, s_stock_font, s_weather_font;
+Layer *s_up_arrow_layer = NULL, *s_down_arrow_layer = NULL;
+TextLayer *s_time_layer = NULL, *s_stock_layer = NULL, *s_weather_layer = NULL;
 
 //@todo Date layer and bitmap layer for date style.
 //@todo create pointer to be sent as context to all message events?
@@ -98,6 +100,8 @@ static void main_window_load(Window *window) {
   layer_add_child(window_layer, text_layer_get_layer(s_time_layer));
   layer_add_child(window_layer, text_layer_get_layer(s_stock_layer));
   layer_add_child(window_layer, text_layer_get_layer(s_weather_layer));
+
+  APP_LOG(APP_LOG_LEVEL_DEBUG, "DONE SETUP LAYER :%p", s_weather_layer);
 }
 
 /**
