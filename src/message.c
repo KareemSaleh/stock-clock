@@ -33,15 +33,12 @@ static void outbox_sent_callback(DictionaryIterator *iterator, void *context) {
 /**
  * Called when registering all the App Message callbacks
  */
-void register_message_handlers(Window *context) {
+void register_message_handlers() {
 
   app_message_register_inbox_received(inbox_received_callback);
   app_message_register_inbox_dropped(inbox_dropped_callback);
   app_message_register_outbox_failed(outbox_failed_callback);
   app_message_register_outbox_sent(outbox_sent_callback);
-
-  // Set the context that will be sent to all callbacks!
-  app_message_set_context(context);
 
   // Open AppMessage
   app_message_open(app_message_inbox_size_maximum(), app_message_outbox_size_maximum());
