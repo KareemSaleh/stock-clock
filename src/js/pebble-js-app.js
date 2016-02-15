@@ -59,6 +59,27 @@ function getWeather() {
   );
 }
 
+function getStocks() {
+  var url = 'http://query.yahooapis.com/v1/public/yql?q=' +
+            'select%20*%20from%20yahoo.finance.quotes%20where%20symbol%20in%20(%22N,APPL%22)' +
+            '&env=store://datatables.org/alltableswithkeys&format=json';
+
+  // Send request to yahooapis
+  xhrRequest(url, 'GET',
+    function(responseText) {
+      var json = JSON.parse(responseText);
+
+      // TODO: Take all stocks and sum them up to send over as one value
+
+      // Assemble dictionary using our keys
+      var dictionary = {
+        'KEY_TYPE': 1, //STOCK
+        'KEY_STOCKS': 0,
+      };
+    }
+  );
+}
+
 // Listen for when the watchface is opened
 Pebble.addEventListener('ready',
   function(e) {
