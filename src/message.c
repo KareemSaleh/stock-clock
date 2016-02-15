@@ -7,7 +7,7 @@ static void inbox_received_callback(DictionaryIterator *iterator, void *context)
   MessageType message_type = message_type_tuple->value->int32;
 
   // Find out what type of message we recieved
-  APP_LOG(APP_LOG_LEVEL_DEBUG, "[DEBUG] message_type: %i", message_type);
+  APP_LOG(APP_LOG_LEVEL_DEBUG, "[DEBUG] Message Type Recieved: %i", message_type);
   switch(message_type) {
     case WEATHER :
       translate_weather_response(iterator, s_weather_layer);
