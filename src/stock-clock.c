@@ -153,8 +153,6 @@ static void init() {
  * Deinitialize the watchface
  */
 static void deinit() {
-  // Destroy the TextLayer
-  text_layer_destroy(s_time_layer);
   // Destroy the Window
   window_destroy(s_main_window);
 }
