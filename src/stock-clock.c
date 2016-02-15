@@ -6,7 +6,7 @@ static GFont s_time_font, s_stock_font, s_weather_font;
 Layer *s_up_arrow_layer = NULL, *s_down_arrow_layer = NULL;
 TextLayer *s_time_layer = NULL, *s_stock_layer = NULL, *s_weather_layer = NULL;
 
-//TODO: Date layer and bitmap layer for date style.
+// TODO: Date layer and bitmap layer for date style.
 
 /**
  * Updates the text layer with current time.
