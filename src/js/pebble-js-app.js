@@ -63,27 +63,37 @@ function getStocks() {
   var url = 'http://query.yahooapis.com/v1/public/yql?q=' +
             'select%20*%20from%20yahoo.finance.quotes%20where%20symbol%20in%20(%22N,APPL%22)' +
             '&env=store://datatables.org/alltableswithkeys&format=json';
-  var quotes = [];
-  var changes = [];
-  var changesPercent = [];
+  var quotes = [], changes = [], changesPercent = [];
+  var totalChange = 0, totalPercent = 0;
 
   // Send request to yahooapis
   xhrRequest(url, 'GET',
     function(responseText) {
       var json = JSON.parse(responseText);
 
-      for (var quote in json.query.results.quote) {
-        quotes.push(quote.symbol);
-        changes.push(quote.Change);
-        changesPercent.push(quote.ChangeinPercent);
+      // Extract information from response JSON
+      var quoteJson = json.query.results.quote;
+      for (var quote in quoteJson) {
+        if (quoteJson.hasOwnProperty(quote)) {
+          quotes.push(quoteJson[quote].symbol);
+          changes.push(quoteJson[quote].Change);
+          changesPercent.push(quoteJson[quote].ChangeinPercent.substring(0,
+            quoteJson[quote].ChangeinPercent.indexOf('%')));
+        }
       }
 
-      // TODO: Take all stocks and sum them up to send over as one value?
+      // Sum our changes and percentages for totals
+      for (var i = 0; i < changes.length; i++) {
+        totalChange += Number(changes[i]);
+      }
+      for (var i = 0; i < changesPercent.length; i++) {
+        totalPercent += Number(changesPercent[i]);
+      }
 
-      // TODO: Assemble dictionary using our keys
       var dictionary = {
         'KEY_TYPE': 1, //STOCK
-        'KEY_STOCKS': 0,
+        'KEY_STOCKS_TOTAL_CHANGE': totalChange,
+        'KEY_STOCKS_TOTAL_PERCENT': totalPercent,
       };
 
       // Send to Pebble

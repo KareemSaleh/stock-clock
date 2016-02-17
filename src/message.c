@@ -1,5 +1,6 @@
 #include "message.h"
 #include "weather.h"
+#include "stock.h"
 #include "layers.h"
 
 static void inbox_received_callback(DictionaryIterator *iterator, void *context) {
@@ -13,6 +14,8 @@ static void inbox_received_callback(DictionaryIterator *iterator, void *context)
       translate_weather_response(iterator, s_weather_layer);
       break;
     case STOCK :
+      translate_stock_response(iterator, s_stock_layer, s_up_arrow_layer, s_down_arrow_layer);
+      break;
     default :
       APP_LOG(APP_LOG_LEVEL_WARNING, "[WARNING] Missing message type.");
   }

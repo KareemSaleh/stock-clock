@@ -13,7 +13,8 @@
     "KEY_TYPE": 0,
     "KEY_TEMPERATURE": 1,
     "KEY_CONDITIONS": 2,
-    "KEY_STOCKS": 3
+    "KEY_STOCKS_TOTAL_CHANGE": 3,
+    "KEY_STOCKS_TOTAL_PERCENT": 4
   },
   "capabilities": [ "location" ],
   "resources": {
