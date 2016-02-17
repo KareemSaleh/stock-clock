@@ -58,7 +58,7 @@ static void main_window_load(Window *window) {
 
   // Create the TextLayers with specific bounds
   s_time_layer = text_layer_create(
-      GRect(0, PBL_IF_ROUND_ELSE(58, 52), bounds.size.w, 50));
+      GRect(0, PBL_IF_ROUND_ELSE(38, 32), bounds.size.w, 50));
   s_stock_layer = text_layer_create(
       GRect(stock_layer_x, PBL_IF_ROUND_ELSE(98, 92), stock_layer_w, 25));
   s_weather_layer = text_layer_create(
@@ -86,7 +86,7 @@ static void main_window_load(Window *window) {
   text_layer_set_text(s_weather_layer, "--°C");
 
   // Create fonts for above layers
-  s_time_font = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_ALARM_CLOCK_36));
+  s_time_font = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_ALARM_CLOCK_48));
   s_stock_font = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_SUBWAY_TICKER_24));
   s_weather_font = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_ROBOTO_BOLD_20));
 

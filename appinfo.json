@@ -20,9 +20,9 @@
     "media": [
       {
         "type": "font",
-        "name": "FONT_ALARM_CLOCK_36",
+        "name": "FONT_ALARM_CLOCK_48",
         "file": "fonts/alarm-clock.ttf",
-        "characterRegex": "[0-9:A-Za-z ]",
+        "characterRegex": "[0-9:APMapm ]",
         "compatibility":"2.7"
       },
       {
