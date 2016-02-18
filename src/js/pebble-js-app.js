@@ -61,7 +61,7 @@ function getWeather() {
 
 function getStocks() {
   var url = 'http://query.yahooapis.com/v1/public/yql?q=' +
-            'select%20*%20from%20yahoo.finance.quotes%20where%20symbol%20in%20(%22N,APPL%22)' +
+            'select%20*%20from%20yahoo.finance.quotes%20where%20symbol%20in%20(%22N,VAB.TO,SCTY%22)' +
             '&env=store://datatables.org/alltableswithkeys&format=json';
   var quotes = [], changes = [], changesPercent = [];
   var totalChange = 0, totalPercent = 0;
@@ -92,8 +92,9 @@ function getStocks() {
 
       var dictionary = {
         'KEY_TYPE': 1, //STOCK
-        'KEY_STOCKS_TOTAL_CHANGE': totalChange,
-        'KEY_STOCKS_TOTAL_PERCENT': totalPercent,
+        'KEY_STOCKS_TOTAL_CHANGE': totalChange.toString(),
+        'KEY_STOCKS_TOTAL_PERCENT': totalPercent.toString(),
+        'KEY_STOCKS_TOTAL_DIRECTION_UP': ((totalPercent >= 0) ? true : false)
       };
 
       // Send to Pebble
