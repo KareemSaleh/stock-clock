@@ -13,9 +13,9 @@ void translate_stock_response(DictionaryIterator *iterator, void *layer, void *u
   // If all data is available, use it
   if (change_tuple && percent_tuple) {
     bool isUp = (bool) direction_tuple->value->int32;
-    char format = (isUp) ? '+' : '-';
-    snprintf(stock_buffer, sizeof(stock_buffer), "%c%s", format, change_tuple->value->cstring);
-    snprintf(percent_buffer, sizeof(percent_buffer), "%c%s", format, percent_tuple->value->cstring);
+    char *format = (isUp) ? "+%s" : "%s";
+    snprintf(stock_buffer, sizeof(stock_buffer), format, change_tuple->value->cstring);
+    snprintf(percent_buffer, sizeof(percent_buffer), format, percent_tuple->value->cstring);
 
     // TODO: Set persistent storage and then mark as dirty rather than set text.
     text_layer_set_text(layer, stock_buffer);
