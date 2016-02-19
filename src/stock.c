@@ -8,7 +8,7 @@ void translate_stock_response(DictionaryIterator *iterator, void *layer, void *u
   // Read tuples for data
   Tuple *change_tuple = dict_find(iterator, KEY_STOCKS_TOTAL_CHANGE);
   Tuple *percent_tuple = dict_find(iterator, KEY_STOCKS_TOTAL_PERCENT);
-  Tuple *direction_tuple = dict_find(iterator, KEY_STOCKS_TOTAL_DIRECTION_UP);
+  Tuple *direction_tuple = dict_find(iterator, KEY_STOCKS_TOTAL_DIRECTION_IS_UP);
 
   // If all data is available, use it
   if (change_tuple && percent_tuple) {

@@ -94,7 +94,7 @@ function getStocks() {
         'KEY_TYPE': 1, //STOCK
         'KEY_STOCKS_TOTAL_CHANGE': totalChange.toString(),
         'KEY_STOCKS_TOTAL_PERCENT': totalPercent.toString(),
-        'KEY_STOCKS_TOTAL_DIRECTION_UP': ((totalPercent >= 0) ? true : false)
+        'KEY_STOCKS_TOTAL_DIRECTION_IS_UP': ((totalChange >= 0) ? true : false)
       };
 
       // Send to Pebble
