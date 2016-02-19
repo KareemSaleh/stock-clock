@@ -17,7 +17,7 @@ static void inbox_received_callback(DictionaryIterator *iterator, void *context)
       translate_stock_response(iterator, s_stock_layer, s_up_arrow_layer, s_down_arrow_layer);
       break;
     default :
-      APP_LOG(APP_LOG_LEVEL_WARNING, "[WARNING] Missing message type.");
+      APP_LOG(APP_LOG_LEVEL_ERROR, "[ERROR] Missing message type.");
   }
 }
 
