@@ -128,3 +128,7 @@ Pebble.addEventListener('appmessage',
     getWeather();
   }
 );
+
+Pebble.addEventListener('showConfiguration', function(e) {
+  Pebble.openURL('https://my-website.com/config-page.html');
+});

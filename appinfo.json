@@ -17,7 +17,7 @@
     "KEY_STOCKS_TOTAL_PERCENT": 4,
     "KEY_STOCKS_TOTAL_DIRECTION_IS_UP": 5
   },
-  "capabilities": [ "location" ],
+  "capabilities": [ "location", "configurable" ],
   "resources": {
     "media": [
       {
