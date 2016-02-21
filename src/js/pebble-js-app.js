@@ -60,9 +60,10 @@ function getWeather() {
 }
 
 function getStocks() {
+  var QUOTES = 'N,VAB.TO,SCTY';
   var url = 'http://query.yahooapis.com/v1/public/yql?q=' +
-            'select%20*%20from%20yahoo.finance.quotes%20where%20symbol%20in%20(%22N,VAB.TO,SCTY%22)' +
-            '&env=store://datatables.org/alltableswithkeys&format=json';
+            'select%20*%20from%20yahoo.finance.quotes%20where%20symbol%20in%20(%22' + QUOTES
+            + '%22)&env=store://datatables.org/alltableswithkeys&format=json';
   var quotes = [], changes = [], changesPercent = [];
   var totalChange = 0, totalPercent = 0;
 
