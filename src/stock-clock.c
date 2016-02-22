@@ -7,7 +7,9 @@ Layer *s_up_arrow_layer = NULL, *s_down_arrow_layer = NULL;
 TextLayer *s_time_layer = NULL, *s_stock_layer = NULL, *s_weather_layer = NULL;
 
 // TODO: Date layer and bitmap layer for date style.
-// TODO: Buzz Watchface on 10% up/down
+// TODO: Buzz Watchface on 10% up/down.
+// TODO: Battery indicator.
+// TODO: Replace Weather conditions with nice icons.
 
 /**
  * Updates the text layer with current time.
