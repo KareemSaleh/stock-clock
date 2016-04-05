@@ -15,7 +15,8 @@
     "KEY_CONDITIONS": 2,
     "KEY_STOCKS_TOTAL_CHANGE": 3,
     "KEY_STOCKS_TOTAL_PERCENT": 4,
-    "KEY_STOCKS_TOTAL_DIRECTION_IS_UP": 5
+    "KEY_STOCKS_TOTAL_DIRECTION_IS_UP": 5,
+    "CONFIG_SYMBOLS": 6
   },
   "capabilities": [ "location", "configurable" ],
   "resources": {
